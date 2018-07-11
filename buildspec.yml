@@ -1,10 +1,14 @@
 version: 0.2
 
 phases:
-  build:
-    commands:
-      - mvn clean package
+    install:
+        commands:
+            - aws s3 cp s3://rufor-jars/ojdbc7-12.1.0.jar .
+            - mvn install:install-file -Dfile="ojdbc7.jar" -DgroupId="com.oracle" -DartifactId="ojdbc7" -Dversion="12.1.0" -Dpackaging="jar"
+    build:
+        commands:
+            - mvn clean package
 artifacts:
-  files:
-    - target/java-demo.war
-  discard-paths: yes
+    files:
+        - target/java-demo.war
+    discard-paths: yes
