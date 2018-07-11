@@ -3,7 +3,7 @@ version: 0.2
 phases:
     install:
         commands:
-            - aws s3 cp s3://rufor-jars/ojdbc7-12.1.0.jar .
+            - aws s3 cp s3://rufor-jars/ojdbc7.jar .
             - mvn install:install-file -Dfile="ojdbc7.jar" -DgroupId="com.oracle" -DartifactId="ojdbc7" -Dversion="12.1.0" -Dpackaging="jar"
     build:
         commands:
